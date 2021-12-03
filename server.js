@@ -21,12 +21,13 @@ app.use('/api', api);
 app.use(express.static('public'));
 
 // Basic routes
-app.get('/', (req, res) =>
-  res.sendFile(path.join(__dirname, '/public/index.html'))
-);
-
 app.get('/notes', (req, res) =>
   res.sendFile(path.join(__dirname, '/public/notes.html'))
+);
+
+// route to catch all other requests
+app.get('/*', (req, res) =>
+  res.sendFile(path.join(__dirname, '/public/index.html'))
 );
 
 app.listen(PORT, () =>
